@@ -1,0 +1,141 @@
+# Project Identity
+name: "Next.js Frontend App"
+purpose: "A modern web application built with Next.js 13+"
+description: "Frontend application implementing latest Next.js features and best practices"
+
+# Application Type and Requirements
+application:
+  type: "web"
+  framework: "Next.js"
+  category: "Frontend Application"
+  target_platforms:
+    - "Web Browsers"
+
+# System Requirements
+system:
+  hardware:
+    minimum_memory: "4GB RAM"
+    recommended_memory: "8GB RAM"
+    disk_space: "1GB"
+  software:
+    runtime:
+      - name: "Node.js"
+        version: ">=18.0.0"
+        install_guide: "https://nodejs.org/en/download/"
+    dependencies:
+      - name: "npm"
+        version: ">=8.0.0"
+
+# Runtime and Technical Details
+runtime:
+  environment: "Node.js v18+"
+  requirements:
+    - "TypeScript 5.0 or higher"
+    - "npm package manager"
+    - "Git for version control"
+
+# Environment Setup
+environment:
+  development:
+    setup_steps:
+      - description: "Install Node.js and npm"
+        command: "Follow instructions at https://nodejs.org"
+      - description: "Install project dependencies"
+        command: "npm install"
+      - description: "Start development server"
+        command: "npm run dev"
+    configuration:
+      env_file: ".env.local"
+      required_variables:
+        - "NEXT_PUBLIC_API_URL"
+        - "DATABASE_URL"
+  production:
+    setup_steps:
+      - description: "Install dependencies"
+        command: "npm install --production"
+      - description: "Build application"
+        command: "npm run build"
+      - description: "Start production server"
+        command: "npm start"
+    configuration:
+      env_file: ".env.production"
+      required_variables:
+        - "NEXT_PUBLIC_API_URL"
+        - "DATABASE_URL"
+
+# Project Structure
+structure:
+  rootFolder:
+    name: "app"
+    purpose: "Contains all Next.js application code"
+    contents: "Pages, components, and API routes"
+  conventions:
+    - "Follow Next.js 13+ app directory conventions"
+    - "Use TypeScript for all code files"
+    - "Components are organized by feature"
+    - "Shared components go in common directory"
+  specialFolders:
+    - path: "app"
+      description: "Next.js app directory"
+      purpose: "Contains all routes and pages"
+    - path: "features"
+      description: "Feature modules"
+      purpose: "Organized feature-specific code"
+    - path: "public"
+      description: "Static assets"
+      purpose: "Images, fonts, and other public files"
+
+# Usage and Setup
+usage:
+  prerequisites:
+    - package: "next"
+      version: "^13.0.0"
+      details: "Core Next.js framework"
+    - package: "react"
+      version: "^18.0.0"
+      details: "React library for UI components"
+    - package: "react-dom"
+      version: "^18.0.0"
+      details: "React DOM rendering"
+    - package: "typescript"
+      version: "^5.0.0"
+      details: "TypeScript for type safety"
+  setup:
+    instructions: "Clone repository and run npm install"
+    tools:
+      - "Node.js v18 or higher"
+      - "npm v8 or higher"
+  commands:
+    - description: "Start development server"
+      usage: "npm run dev"
+      environment: "development"
+    - description: "Build for production"
+      usage: "npm run build"
+      environment: "production"
+    - description: "Start production server"
+      usage: "npm start"
+      environment: "production"
+    - description: "Run type checking"
+      usage: "npm run type-check"
+      environment: "development"
+
+# Documentation
+documentation:
+  references:
+    - url: "https://nextjs.org/docs"
+      description: "Next.js Documentation"
+      type: "documentation"
+
+goals:
+  - "Implement core features"
+  - "Ensure responsive design"
+  - "Optimize performance"
+summary: "Setting up Next.js 13+ project structure"
+nextSteps:
+  - "Create basic layout"
+  - "Set up routing"
+  - "Implement core components"
+progress:
+  percentage: 10
+  summary: "Initial project setup"
+completed: false 
