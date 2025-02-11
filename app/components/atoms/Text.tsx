@@ -1,37 +1,59 @@
+import { type HTMLAttributes } from "react"
 import { cn } from "@/app/lib/utils"
-import { tokens } from "@/app/styles/design-tokens"
 
-type TextSize = keyof typeof tokens.typography.sizes
-type TextWeight = keyof typeof tokens.typography.weights
+interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
+  as?: "p" | "span" | "div"
+  size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl"
+  weight?: "normal" | "medium" | "semibold" | "bold"
+  align?: "left" | "center" | "right"
+  color?: "default" | "muted" | "primary"
+}
 
-interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
-  size?: TextSize
-  weight?: TextWeight
-  as?: 'p' | 'span' | 'div'
-  variant?: 'default' | 'muted' | 'primary'
+const sizeClasses = {
+  xs: "text-xs",
+  sm: "text-sm",
+  base: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
+  "2xl": "text-2xl",
+}
+
+const weightClasses = {
+  normal: "font-normal",
+  medium: "font-medium",
+  semibold: "font-semibold",
+  bold: "font-bold",
+}
+
+const alignClasses = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+}
+
+const colorClasses = {
+  default: "text-foreground",
+  muted: "text-muted-foreground",
+  primary: "text-primary",
 }
 
 export function Text({
-  children,
-  size = 'base',
-  weight = 'normal',
-  as: Component = 'p',
-  variant = 'default',
+  as: Component = "p",
+  size = "base",
+  weight = "normal",
+  align = "left",
+  color = "default",
   className,
+  children,
   ...props
 }: TextProps) {
-  const variantStyles = {
-    default: 'text-foreground',
-    muted: 'text-muted-foreground',
-    primary: 'text-primary',
-  }
-
   return (
     <Component
       className={cn(
-        variantStyles[variant],
-        `text-[${tokens.typography.sizes[size]}]`,
-        `font-[${tokens.typography.weights[weight]}]`,
+        sizeClasses[size],
+        weightClasses[weight],
+        alignClasses[align],
+        colorClasses[color],
         className
       )}
       {...props}
