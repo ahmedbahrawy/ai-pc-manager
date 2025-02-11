@@ -17,15 +17,22 @@ export const FADE_UP_ANIMATION_VARIANTS = {
 
 export const STAGGER_CHILD_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", duration: 0.4 } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 50,
+    },
+  },
 }
 
 export const STAGGER_CONTAINER_VARIANTS = {
-  hidden: { opacity: 0 },
+  hidden: {},
   show: {
-    opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 }
@@ -35,8 +42,12 @@ export const SCALE_ANIMATION_VARIANTS = {
   show: { opacity: 1, scale: 1, transition: { type: "spring" } },
 }
 
-export const CARD_HOVER_MOTION_PROPS: MotionProps = {
+export const CARD_HOVER_MOTION_PROPS = {
   whileHover: { scale: 1.02 },
   whileTap: { scale: 0.98 },
-  transition: { type: "spring", stiffness: 300 },
+  transition: {
+    type: "spring",
+    damping: 15,
+    stiffness: 300,
+  },
 } 
