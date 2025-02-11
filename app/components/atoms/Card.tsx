@@ -1,10 +1,9 @@
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { Card as UICard, CardContent } from "@/app/components/ui/card"
 import { FADE_UP_VARIANTS } from "@/app/lib/utils/animations"
 
-interface CardProps {
+interface CardProps extends Omit<HTMLMotionProps<"div">, "children"> {
   children: React.ReactNode
-  className?: string
   gradient?: boolean
   hover?: boolean
   delay?: number
@@ -16,6 +15,7 @@ export function Card({
   gradient = false,
   hover = true,
   delay = 0,
+  ...props
 }: CardProps) {
   return (
     <motion.div
@@ -25,15 +25,15 @@ export function Card({
       variants={FADE_UP_VARIANTS}
       transition={{ duration: 0.5, delay }}
       whileHover={hover ? { y: -5 } : undefined}
+      className={`
+        h-full transition-all duration-300 relative overflow-hidden
+        ${hover ? "hover:shadow-lg" : ""}
+        ${gradient ? "bg-gradient-to-br from-primary/5 to-transparent" : ""}
+        ${className}
+      `}
+      {...props}
     >
-      <UICard
-        className={`
-          h-full transition-all duration-300 relative overflow-hidden
-          ${hover ? "hover:shadow-lg" : ""}
-          ${gradient ? "bg-gradient-to-br from-primary/5 to-transparent" : ""}
-          ${className}
-        `}
-      >
+      <UICard className="h-full">
         {gradient && (
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-primary" />
         )}

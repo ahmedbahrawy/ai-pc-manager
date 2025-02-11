@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/app/components/ui/button"
 import { Brain, Menu, X, ChevronRight, Award, Globe2, Zap, Users, Shield, Trophy, ArrowRight } from "lucide-react"
-import { Card, CardContent } from "@/app/components/ui/card"
+import { Card } from "@/app/components/atoms/Card"
 import { Layout } from "@/app/components/templates/Layout"
 import { Section } from "@/app/components/atoms/Section"
 import { SectionHeading } from "@/app/components/molecules/SectionHeading"
@@ -174,7 +174,10 @@ function AccreditationSection() {
 
       <div className="grid md:grid-cols-3 gap-8">
         {ACCREDITATION_CARDS.map((card, index) => (
-          <Card key={index} delay={0.1 * index}>
+          <Card
+            key={index}
+            transition={{ duration: 0.5, delay: 0.1 * index }}
+          >
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">{card.title}</h3>
               <p className="text-muted-foreground">{card.description}</p>
@@ -261,7 +264,11 @@ function MembershipSection() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {MEMBERSHIP_CARDS.map((item, index) => (
-          <Card key={index} gradient delay={0.1 * index}>
+          <Card
+            key={index}
+            gradient
+            transition={{ duration: 0.5, delay: 0.1 * index }}
+          >
             <div className="text-center space-y-4">
               <h3 className="text-xl font-semibold">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
