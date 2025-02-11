@@ -1,7 +1,7 @@
 import { type HTMLAttributes } from "react"
 import { cn } from "@/app/lib/utils"
 
-interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md" | "lg" | "xl" | "full"
   padding?: "none" | "sm" | "md" | "lg"
   center?: boolean

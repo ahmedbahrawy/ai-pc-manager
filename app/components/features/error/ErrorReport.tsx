@@ -2,7 +2,6 @@
 
 import { type ErrorInfo } from "react"
 import { Button } from "@/app/components/ui/button"
-import { ANIMATION_CLASSES } from "@/app/lib/animations"
 
 interface ErrorReportProps {
   error: Error
@@ -12,7 +11,7 @@ interface ErrorReportProps {
 
 export function ErrorReport({ error, errorInfo, onReset }: ErrorReportProps) {
   return (
-    <div className={`min-h-screen bg-background ${ANIMATION_CLASSES.fadeIn.className}`}>
+    <div className="min-h-screen bg-background animate-in fade-in duration-300">
       <div className="container flex min-h-screen flex-col items-center justify-center gap-8">
         <div className="mx-auto max-w-md text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Something went wrong</h1>

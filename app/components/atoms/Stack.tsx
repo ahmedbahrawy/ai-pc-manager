@@ -1,8 +1,8 @@
 import { type HTMLAttributes } from "react"
 import { cn } from "@/app/lib/utils"
 
-interface StackProps extends HTMLAttributes<HTMLDivElement> {
-  as?: "div" | "section" | "article"
+export interface StackProps extends HTMLAttributes<HTMLDivElement> {
+  as?: "div" | "section" | "article" | "nav"
   direction?: "row" | "column"
   align?: "start" | "center" | "end" | "stretch"
   justify?: "start" | "center" | "end" | "between" | "around"
