@@ -22,13 +22,15 @@ export default function HomePage() {
   return (
     <HomeErrorBoundary>
       <Suspense fallback={<HomeLoading />}>
-        <main className="flex min-h-screen flex-col antialiased">
+        <div className="relative flex flex-col">
           <HeroSection />
-          <FeaturesSection />
-          <SolutionsSection />
-          <StatsSection />
-          <CTASection />
-        </main>
+          <div className="relative z-10 flex flex-col bg-background">
+            <FeaturesSection />
+            <SolutionsSection />
+            <StatsSection />
+            <CTASection />
+          </div>
+        </div>
       </Suspense>
     </HomeErrorBoundary>
   )

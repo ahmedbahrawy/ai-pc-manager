@@ -1,4 +1,6 @@
-import { motion } from "framer-motion"
+"use client"
+
+import { motion, LazyMotion, domAnimation } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/app/lib/animations"
@@ -6,59 +8,72 @@ import { HOME_HERO } from "@/app/lib/constants/home"
 
 export function HeroSection() {
   return (
-    <motion.section
-      initial="hidden"
-      animate="show"
-      viewport={{ once: true }}
-      variants={{
-        hidden: {},
-        show: {
-          transition: {
-            staggerChildren: 0.15,
-          },
-        },
-      }}
-      className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-8 py-12 text-center md:py-16"
-    >
-      <motion.div
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="relative z-10 max-w-4xl px-6 md:px-8"
-      >
-        <h1 className="bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
-          {HOME_HERO.title.main}
-          <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-            {" "}
-            {HOME_HERO.title.highlight}
-          </span>
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-          {HOME_HERO.description}
-        </p>
-      </motion.div>
+    <LazyMotion features={domAnimation}>
+      <section className="relative isolate overflow-hidden">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+          className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-6 px-4 py-8 text-center sm:px-6 md:gap-8 md:py-16 lg:px-8"
+        >
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            className="relative z-10 mx-auto max-w-4xl"
+          >
+            <h1 className="bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl dark:from-gray-100 dark:to-gray-400">
+              {HOME_HERO.title.main}
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                {" "}
+                {HOME_HERO.title.highlight}
+              </span>
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+              {HOME_HERO.description}
+            </p>
+          </motion.div>
 
-      <motion.div
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="flex flex-col gap-4 sm:flex-row"
-      >
-        <Button size="lg" className="h-12 px-8" asChild>
-          <Link href={HOME_HERO.cta.primary.href}>
-            {HOME_HERO.cta.primary.text}
-          </Link>
-        </Button>
-        <Button size="lg" variant="outline" className="h-12 px-8" asChild>
-          <Link href={HOME_HERO.cta.secondary.href}>
-            {HOME_HERO.cta.secondary.text}
-          </Link>
-        </Button>
-      </motion.div>
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            className="flex flex-col gap-4 sm:flex-row"
+          >
+            <Button size="lg" className="h-12 px-8" asChild>
+              <Link href={HOME_HERO.cta.primary.href} prefetch={false}>
+                {HOME_HERO.cta.primary.text}
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="h-12 px-8" asChild>
+              <Link href={HOME_HERO.cta.secondary.href} prefetch={false}>
+                {HOME_HERO.cta.secondary.text}
+              </Link>
+            </Button>
+          </motion.div>
 
-      <motion.div
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-grid-gray-900/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80" />
-      </motion.div>
-    </motion.section>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-grid-gray-900/10 dark:bg-grid-gray-100/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
+          </div>
+
+          {/* Background Gradient */}
+          <div className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
+            <div
+              className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary/30 to-secondary/30 opacity-30"
+              style={{
+                clipPath:
+                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+              }}
+            />
+          </div>
+        </motion.div>
+      </section>
+    </LazyMotion>
   )
 } 

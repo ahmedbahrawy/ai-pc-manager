@@ -1,5 +1,6 @@
 "use client"
 
+import { type Metadata } from "next"
 import { motion } from "framer-motion"
 import { ServiceCard } from "@/app/components/molecules/ServiceCard"
 import { ServiceFilters } from "@/app/components/molecules/ServiceFilters"
