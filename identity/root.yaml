@@ -1,15 +1,16 @@
 # Project Identity
-name: "Next.js Frontend App"
-purpose: "A modern web application built with Next.js 13+"
-description: "Frontend application implementing latest Next.js features and best practices"
+name: "AI-Driven Business Solutions"
+purpose: "Empowering businesses with AI-driven solutions and strategic enhancements"
+description: "Next.js application providing AI-driven business solutions, consultation, and micro-apps"
 
 # Application Type and Requirements
 application:
   type: "web"
   framework: "Next.js"
-  category: "Frontend Application"
+  category: "Business Solutions"
   target_platforms:
     - "Web Browsers"
+    - "Progressive Web App"
 
 # System Requirements
 system:
@@ -24,7 +25,42 @@ system:
         install_guide: "https://nodejs.org/en/download/"
     dependencies:
       - name: "npm"
-        version: ">=8.0.0"
+        version: ">=9.0.0"
+
+# Environment Setup
+environment:
+  development:
+    setup_steps:
+      - description: "Install dependencies"
+        command: "npm install"
+      - description: "Start development server"
+        command: "npm run dev"
+    configuration:
+      env_file: ".env.local"
+      required_variables:
+        - "NEXT_PUBLIC_APP_URL"
+        - "NEXT_PUBLIC_APP_ENV"
+        - "NEXT_PUBLIC_API_URL"
+        - "DATABASE_URL"
+        - "NEXT_PUBLIC_FEATURE_FLAGS"
+  production:
+    setup_steps:
+      - description: "Install production dependencies"
+        command: "npm ci"
+      - description: "Build application"
+        command: "npm run build"
+    configuration:
+      env_file: ".env.production"
+      required_variables:
+        - "NEXT_PUBLIC_APP_URL"
+        - "NEXT_PUBLIC_APP_ENV"
+        - "NEXT_PUBLIC_API_URL"
+        - "NEXT_PUBLIC_GA_TRACKING_ID"
+        - "NEXT_PUBLIC_FEATURE_FLAGS"
+        - "NEXT_PUBLIC_CACHE_MAX_AGE"
+        - "NEXT_PUBLIC_CDN_URL"
+        - "NEXT_PUBLIC_CSP_DOMAINS"
+        - "DATABASE_URL"
 
 # Runtime and Technical Details
 runtime:
@@ -34,77 +70,51 @@ runtime:
     - "npm package manager"
     - "Git for version control"
 
-# Environment Setup
-environment:
-  development:
-    setup_steps:
-      - description: "Install Node.js and npm"
-        command: "Follow instructions at https://nodejs.org"
-      - description: "Install project dependencies"
-        command: "npm install"
-      - description: "Start development server"
-        command: "npm run dev"
-    configuration:
-      env_file: ".env.local"
-      required_variables:
-        - "NEXT_PUBLIC_API_URL"
-        - "DATABASE_URL"
-  production:
-    setup_steps:
-      - description: "Install dependencies"
-        command: "npm install --production"
-      - description: "Build application"
-        command: "npm run build"
-      - description: "Start production server"
-        command: "npm start"
-    configuration:
-      env_file: ".env.production"
-      required_variables:
-        - "NEXT_PUBLIC_API_URL"
-        - "DATABASE_URL"
-
 # Project Structure
 structure:
   rootFolder:
     name: "app"
     purpose: "Contains all Next.js application code"
     contents: "Pages, components, and API routes"
+    subfolders:
+      - name: "components"
+        purpose: "UI components organized by atomic design"
+        contents: "Atoms, molecules, organisms, and features"
+      - name: "lib"
+        purpose: "Shared utilities and helpers"
+        contents: "Utility functions and constants"
   conventions:
-    - "Follow Next.js 13+ app directory conventions"
-    - "Use TypeScript for all code files"
-    - "Components are organized by feature"
-    - "Shared components go in common directory"
+    - "Atomic Design Pattern for components"
+    - "Feature-first organization"
+    - "Type-safe throughout"
   specialFolders:
-    - path: "app"
-      description: "Next.js app directory"
-      purpose: "Contains all routes and pages"
-    - path: "features"
-      description: "Feature modules"
-      purpose: "Organized feature-specific code"
-    - path: "public"
-      description: "Static assets"
-      purpose: "Images, fonts, and other public files"
+    - path: "app/components/atoms"
+      description: "Basic building blocks"
+      purpose: "Fundamental UI components"
+    - path: "app/components/molecules"
+      description: "Combinations of atoms"
+      purpose: "Composite components"
+    - path: "app/components/organisms"
+      description: "Complex components"
+      purpose: "Full-featured UI sections"
+    - path: "app/components/features"
+      description: "Feature-specific components"
+      purpose: "Components tied to specific features"
 
 # Usage and Setup
 usage:
   prerequisites:
     - package: "next"
-      version: "^13.0.0"
+      version: "14.0.3"
       details: "Core Next.js framework"
     - package: "react"
-      version: "^18.0.0"
-      details: "React library for UI components"
-    - package: "react-dom"
-      version: "^18.0.0"
-      details: "React DOM rendering"
-    - package: "typescript"
-      version: "^5.0.0"
-      details: "TypeScript for type safety"
+      version: "^18"
+      details: "React library"
   setup:
-    instructions: "Clone repository and run npm install"
+    instructions: "Run npm install and npm run dev"
     tools:
       - "Node.js v18 or higher"
-      - "npm v8 or higher"
+      - "npm v9 or higher"
   commands:
     - description: "Start development server"
       usage: "npm run dev"
@@ -115,16 +125,16 @@ usage:
     - description: "Start production server"
       usage: "npm start"
       environment: "production"
-    - description: "Run type checking"
-      usage: "npm run type-check"
-      environment: "development"
 
 # Documentation
 documentation:
   references:
     - url: "https://nextjs.org/docs"
       description: "Next.js Documentation"
-      type: "documentation"
+      type: "framework"
+    - url: "https://tailwindcss.com/docs"
+      description: "Tailwind CSS Documentation"
+      type: "styling"
 
 goals:
   - "Implement core features"

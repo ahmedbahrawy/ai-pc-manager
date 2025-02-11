@@ -2,10 +2,10 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from './components/organisms/Header'
-import Footer from './components/Footer'
+import { Footer } from './components/organisms/Footer'
 import { ThemeProvider } from './components/theme-provider'
 import { Toaster } from './components/ui/toaster'
-import { ErrorBoundary } from './components/ErrorBoundary'
+import { ErrorBoundary } from './components/features/error'
 
 const inter = Inter({ 
   subsets: ['latin'],
