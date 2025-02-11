@@ -1,56 +1,52 @@
-import { motion } from "framer-motion"
-import { FADE_IN_VARIANTS } from "@/app/lib/utils/animations"
+import { type HTMLAttributes } from "react"
+import { cn } from "@/app/lib/utils"
+import { Container, type ContainerProps } from "./Container"
+import { Stack } from "./Stack"
 
-interface SectionProps {
-  children: React.ReactNode
-  className?: string
-  background?: "default" | "gradient-up" | "gradient-down" | "transparent"
-  pattern?: boolean
+export interface SectionProps extends HTMLAttributes<HTMLElement> {
+  as?: "section" | "div" | "article" | "aside"
+  containerSize?: ContainerProps["size"]
+  containerPadding?: ContainerProps["padding"]
+  spacing?: "none" | "sm" | "md" | "lg" | "xl"
+  center?: boolean
+}
+
+const spacingClasses = {
+  none: "py-0",
+  sm: "py-8 sm:py-12 lg:py-16",
+  md: "py-12 sm:py-16 lg:py-24",
+  lg: "py-16 sm:py-24 lg:py-32",
+  xl: "py-24 sm:py-32 lg:py-40",
 }
 
 export function Section({
+  as: Component = "section",
+  containerSize = "lg",
+  containerPadding = "sm",
+  spacing = "md",
+  center = false,
+  className,
   children,
-  className = "",
-  background = "default",
-  pattern = false,
+  ...props
 }: SectionProps) {
-  const getBgClass = () => {
-    switch (background) {
-      case "gradient-up":
-        return "bg-gradient-to-t from-background to-primary/5"
-      case "gradient-down":
-        return "bg-gradient-to-b from-background to-primary/5"
-      case "transparent":
-        return "bg-transparent"
-      default:
-        return "bg-background"
-    }
-  }
-
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={FADE_IN_VARIANTS}
-      transition={{ duration: 0.5 }}
-      className={`relative py-20 overflow-hidden ${getBgClass()} ${className}`}
-    >
-      {pattern && (
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/pattern.png')",
-              backgroundSize: "30px 30px",
-              backgroundRepeat: "repeat",
-            }}
-          />
-        </div>
+    <Component
+      className={cn(
+        "relative",
+        spacingClasses[spacing],
+        className
       )}
-      <div className="container mx-auto px-4 relative">
-        {children}
-      </div>
-    </motion.section>
+      {...props}
+    >
+      <Container size={containerSize} padding={containerPadding}>
+        {center ? (
+          <Stack align="center" justify="center" className="text-center">
+            {children}
+          </Stack>
+        ) : (
+          children
+        )}
+      </Container>
+    </Component>
   )
 } 

@@ -1,17 +1,18 @@
 import { TRANSITION_DURATION, TRANSITION_TIMING } from "./constants"
 
-export const KEYFRAME_ANIMATIONS = {
+// CSS Keyframe Definitions
+export const KEYFRAMES = {
   fadeIn: `
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
   `,
-  fadeInDown: `
-    @keyframes fadeInDown {
-      from {
+  fadeUp: `
+    @keyframes fadeUp {
+      from { 
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(10px);
       }
       to {
         opacity: 1;
@@ -19,11 +20,23 @@ export const KEYFRAME_ANIMATIONS = {
       }
     }
   `,
-  scaleIn: `
-    @keyframes scaleIn {
+  fadeDown: `
+    @keyframes fadeDown {
       from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `,
+  scale: `
+    @keyframes scale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
       }
       to {
         opacity: 1;
@@ -31,11 +44,23 @@ export const KEYFRAME_ANIMATIONS = {
       }
     }
   `,
-  slideIn: `
-    @keyframes slideIn {
+  slideLeft: `
+    @keyframes slideLeft {
       from {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  `,
+  slideRight: `
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(10px);
       }
       to {
         opacity: 1;
@@ -45,6 +70,7 @@ export const KEYFRAME_ANIMATIONS = {
   `,
 }
 
+// Tailwind Animation Classes
 export const ANIMATION_CLASSES = {
   fadeIn: {
     className: "animate-fade-in",
@@ -54,27 +80,43 @@ export const ANIMATION_CLASSES = {
       }
     `,
   },
-  fadeInDown: {
-    className: "animate-fade-in-down",
+  fadeUp: {
+    className: "animate-fade-up",
     css: `
-      .animate-fade-in-down {
-        animation: fadeInDown ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+      .animate-fade-up {
+        animation: fadeUp ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
       }
     `,
   },
-  scaleIn: {
-    className: "animate-scale-in",
+  fadeDown: {
+    className: "animate-fade-down",
     css: `
-      .animate-scale-in {
-        animation: scaleIn ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+      .animate-fade-down {
+        animation: fadeDown ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
       }
     `,
   },
-  slideIn: {
-    className: "animate-slide-in",
+  scale: {
+    className: "animate-scale",
     css: `
-      .animate-slide-in {
-        animation: slideIn ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+      .animate-scale {
+        animation: scale ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+      }
+    `,
+  },
+  slideLeft: {
+    className: "animate-slide-left",
+    css: `
+      .animate-slide-left {
+        animation: slideLeft ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+      }
+    `,
+  },
+  slideRight: {
+    className: "animate-slide-right",
+    css: `
+      .animate-slide-right {
+        animation: slideRight ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
       }
     `,
   },

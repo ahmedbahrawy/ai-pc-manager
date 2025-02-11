@@ -1,27 +1,29 @@
 import Link from 'next/link'
 import { Button } from '@/app/components/ui/button'
+import { Section } from "@/app/components/atoms/Section"
+import { Stack } from "@/app/components/atoms/Stack"
+import { TextGroup } from "@/app/components/atoms/TextGroup"
 
 export default function NotFound() {
   return (
-    <div className="min-h-[600px] flex flex-col items-center justify-center p-4">
-      <div className="text-center space-y-6 max-w-md">
-        <h1 className="text-4xl font-bold">404 - Page Not Found</h1>
-        <p className="text-muted-foreground text-lg">
-          Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button asChild>
-            <Link href="/">
-              Go home
-            </Link>
+    <Section spacing="xl" center className="min-h-[calc(100vh-4rem)]">
+      <Stack gap="lg">
+        <TextGroup
+          title="404 - Page Not Found"
+          description="Sorry, we couldn't find the page you're looking for. Please check the URL or navigate back to our homepage."
+          titleSize="3xl"
+          align="center"
+        />
+
+        <Stack direction="row" gap="md" justify="center">
+          <Button size="lg" asChild>
+            <Link href="/">Return home</Link>
           </Button>
-          <Button variant="outline" asChild>
-            <Link href="/contact">
-              Contact support
-            </Link>
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/contact">Contact support</Link>
           </Button>
-        </div>
-      </div>
-    </div>
+        </Stack>
+      </Stack>
+    </Section>
   )
 } 

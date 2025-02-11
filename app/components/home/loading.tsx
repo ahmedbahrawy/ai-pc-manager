@@ -1,82 +1,18 @@
 "use client"
 
 import { Skeleton } from "@/app/components/ui/skeleton"
+import { Loader2 } from "lucide-react"
+import { Section } from "@/app/components/atoms/Section"
+import { Stack } from "@/app/components/atoms/Stack"
+import { Text } from "@/app/components/atoms/Text"
 
 export function HomeLoading() {
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Hero Section Loading */}
-      <div className="container flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-8 py-12 text-center md:py-16">
-        <div className="relative z-10 max-w-4xl px-6 md:px-8">
-          <Skeleton data-testid="hero-skeleton" className="mx-auto h-16 w-3/4" />
-          <Skeleton data-testid="hero-skeleton" className="mx-auto mt-6 h-24 w-full" />
-        </div>
-        <div className="flex gap-4">
-          <Skeleton data-testid="hero-skeleton" className="h-12 w-32" />
-        </div>
-      </div>
-
-      {/* Features Section Loading */}
-      <div className="container py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <Skeleton className="mx-auto h-10 w-2/3" />
-          <Skeleton className="mx-auto mt-4 h-16 w-full" />
-        </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="relative pl-16">
-              <Skeleton data-testid="feature-skeleton" className="absolute left-0 top-0 h-10 w-10 rounded-lg" />
-              <Skeleton className="h-6 w-48" />
-              <Skeleton className="mt-2 h-20 w-full" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Solutions Section Loading */}
-      <div className="container py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <Skeleton className="mx-auto h-10 w-2/3" />
-          <Skeleton className="mx-auto mt-4 h-16 w-full" />
-        </div>
-        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-full rounded-lg border p-6">
-              <Skeleton data-testid="solution-skeleton" className="h-10 w-10 rounded-lg" />
-              <Skeleton className="mt-4 h-6 w-32" />
-              <Skeleton className="mt-2 h-16 w-full" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Stats Section Loading */}
-      <div className="container py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <Skeleton className="mx-auto h-10 w-2/3" />
-          <Skeleton className="mx-auto mt-4 h-16 w-full" />
-        </div>
-        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="text-center">
-              <Skeleton data-testid="stat-skeleton" className="mx-auto h-12 w-24" />
-              <Skeleton className="mx-auto mt-2 h-6 w-32" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA Section Loading */}
-      <div className="container py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <Skeleton data-testid="cta-skeleton" className="mx-auto h-10 w-2/3" />
-          <Skeleton data-testid="cta-skeleton" className="mx-auto mt-4 h-16 w-full" />
-          <div className="mt-10 flex justify-center gap-4">
-            <Skeleton data-testid="cta-skeleton" className="h-12 w-32" />
-            <Skeleton data-testid="cta-skeleton" className="h-12 w-32" />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Section spacing="xl" center className="min-h-[calc(100vh-4rem)]">
+      <Stack gap="md" align="center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <Text color="muted">Loading home page...</Text>
+      </Stack>
+    </Section>
   )
 } 

@@ -1,34 +1,26 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FADE_DOWN_ANIMATION_VARIANTS } from "@/app/lib/animations"
 import { HOME_FEATURES } from "@/app/lib/constants/home"
+import {
+  STAGGER_ANIMATION_PROPS,
+  STAGGER_ITEM_VARIANTS,
+} from "@/app/lib/animations"
+import { Section } from "@/app/components/atoms/Section"
+import { Stack } from "@/app/components/atoms/Stack"
 
 export function FeaturesSection() {
   return (
-    <section className="container py-16 sm:py-24 lg:py-32">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.12,
-            },
-          },
-        }}
-        className="mx-auto max-w-2xl text-center"
-      >
+    <Section spacing="lg" center>
+      <motion.div {...STAGGER_ANIMATION_PROPS}>
         <motion.h2
-          variants={FADE_DOWN_ANIMATION_VARIANTS}
+          variants={STAGGER_ITEM_VARIANTS}
           className="text-3xl font-bold tracking-tight sm:text-4xl"
         >
           {HOME_FEATURES.title}
         </motion.h2>
         <motion.p
-          variants={FADE_DOWN_ANIMATION_VARIANTS}
+          variants={STAGGER_ITEM_VARIANTS}
           className="mt-4 text-lg text-muted-foreground"
         >
           {HOME_FEATURES.description}
@@ -36,25 +28,15 @@ export function FeaturesSection() {
       </motion.div>
 
       <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.12,
-            },
-          },
-        }}
-        className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+        {...STAGGER_ANIMATION_PROPS}
+        className="mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
         {HOME_FEATURES.items.map((feature) => {
           const Icon = feature.icon
           return (
             <motion.div
               key={feature.title}
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
+              variants={STAGGER_ITEM_VARIANTS}
               className="relative pl-14 sm:pl-16"
             >
               <div className="text-base font-semibold leading-7">
@@ -68,6 +50,6 @@ export function FeaturesSection() {
           )
         })}
       </motion.div>
-    </section>
+    </Section>
   )
 } 

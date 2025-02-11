@@ -2,7 +2,9 @@
 
 import { useEffect } from 'react'
 import { Button } from '@/app/components/ui/button'
-import { useRouter } from 'next/navigation'
+import { Section } from '@/app/components/atoms/Section'
+import { Stack } from '@/app/components/atoms/Stack'
+import { TextGroup } from '@/app/components/atoms/TextGroup'
 
 export default function Error({
   error,
@@ -11,34 +13,44 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const router = useRouter()
-
   useEffect(() => {
     // Log the error to an error reporting service
     console.error('Global error:', error)
   }, [error])
 
   return (
-    <div className="min-h-[600px] flex flex-col items-center justify-center p-4">
-      <div className="text-center space-y-6 max-w-md">
-        <h1 className="text-4xl font-bold text-destructive">Oops! Something went wrong</h1>
-        <p className="text-muted-foreground text-lg">
-          {error.message || 'An unexpected error occurred. Our team has been notified.'}
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button onClick={() => reset()} variant="default">
+    <Section spacing="xl" center className="min-h-[calc(100vh-4rem)]">
+      <Stack gap="lg">
+        <TextGroup
+          title="Something went wrong!"
+          description="We apologize for the inconvenience. Please try again or contact support if the problem persists."
+          titleSize="3xl"
+          align="center"
+        />
+
+        <Stack direction="row" gap="md" justify="center">
+          <Button onClick={reset} size="lg">
             Try again
           </Button>
-          <Button onClick={() => router.push('/')} variant="outline">
-            Go home
+          <Button variant="outline" size="lg" asChild>
+            <a href="/">Return home</a>
           </Button>
-        </div>
-        {error.digest && (
-          <p className="text-sm text-muted-foreground mt-8">
-            Error ID: {error.digest}
-          </p>
+        </Stack>
+
+        {process.env.NODE_ENV === "development" && (
+          <Stack gap="sm" className="w-full max-w-2xl rounded-lg border bg-muted/50 p-4">
+            <TextGroup
+              title="Error Details"
+              titleSize="lg"
+              description={error.message}
+              align="left"
+            />
+            <pre className="overflow-auto rounded-md bg-muted p-4 text-sm">
+              <code>{error.stack}</code>
+            </pre>
+          </Stack>
         )}
-      </div>
-    </div>
+      </Stack>
+    </Section>
   )
 } 

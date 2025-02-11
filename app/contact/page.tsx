@@ -1,127 +1,114 @@
-import React from 'react';
+import { Section } from "@/app/components/atoms/Section"
+import { Stack } from "@/app/components/atoms/Stack"
+import { TextGroup } from "@/app/components/atoms/TextGroup"
+import { Text } from "@/app/components/atoms/Text"
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-            Contact Us
-          </h1>
-          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            Get in touch with our team for inquiries, support, or to discuss how we can help transform your business.
-          </p>
-        </div>
+    <Section spacing="xl">
+      <Stack gap="xl">
+        <TextGroup
+          title="Contact Us"
+          description="Get in touch with our team for inquiries, support, or to discuss how we can help transform your business."
+          titleSize="4xl"
+          align="center"
+        />
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <Stack className="bg-card rounded-lg shadow-lg p-8">
+            <TextGroup
+              title="Send us a Message"
+              titleSize="2xl"
+              align="left"
+            />
+            <form className="mt-6 space-y-6">
+              <Stack gap="sm">
+                <label htmlFor="name" className="block text-sm font-medium">
                   Full Name
                 </label>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="mt-1 block w-full rounded-md border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   placeholder="John Doe"
                 />
-              </div>
+              </Stack>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
+              <Stack gap="sm">
+                <label htmlFor="email" className="block text-sm font-medium">
+                  Email Address
                 </label>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="mt-1 block w-full rounded-md border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   placeholder="john@example.com"
                 />
-              </div>
+              </Stack>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  id="subject"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="How can we help?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              <Stack gap="sm">
+                <label htmlFor="message" className="block text-sm font-medium">
                   Message
                 </label>
                 <textarea
                   name="message"
                   id="message"
                   rows={4}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Your message here..."
+                  className="mt-1 block w-full rounded-md border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  placeholder="How can we help you?"
                 />
-              </div>
+              </Stack>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md transition-colors"
               >
                 Send Message
               </button>
             </form>
-          </div>
+          </Stack>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Address</h3>
-                  <p className="mt-2 text-gray-600">
+          <Stack gap="lg">
+            <Stack className="bg-card rounded-lg shadow-lg p-8">
+              <TextGroup
+                title="Contact Information"
+                titleSize="2xl"
+                align="left"
+              />
+              <Stack gap="lg" className="mt-6">
+                <Stack gap="sm">
+                  <Text size="lg" weight="medium">Address</Text>
+                  <Text color="muted">
                     123 Business Street<br />
                     Tech District<br />
                     City, State 12345
-                  </p>
-                </div>
+                  </Text>
+                </Stack>
 
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <p className="mt-2 text-gray-600">
+                <Stack gap="sm">
+                  <Text size="lg" weight="medium">Email</Text>
+                  <Text color="muted">
                     info@company.com<br />
                     support@company.com
-                  </p>
-                </div>
+                  </Text>
+                </Stack>
 
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                  <p className="mt-2 text-gray-600">
+                <Stack gap="sm">
+                  <Text size="lg" weight="medium">Phone</Text>
+                  <Text color="muted">
                     +1 (555) 123-4567<br />
                     +1 (555) 987-6543
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Business Hours</h2>
-              <div className="space-y-2">
-                <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
-                <p className="text-gray-600">Sunday: Closed</p>
-              </div>
-            </div>
-          </div>
+                  </Text>
+                </Stack>
+              </Stack>
+            </Stack>
+          </Stack>
         </div>
-      </div>
-    </div>
-  );
+      </Stack>
+    </Section>
+  )
 } 

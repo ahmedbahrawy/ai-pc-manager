@@ -1,10 +1,15 @@
+import { Loader2 } from "lucide-react"
+import { Section } from "@/app/components/atoms/Section"
+import { Stack } from "@/app/components/atoms/Stack"
+import { Text } from "@/app/components/atoms/Text"
+
 export default function Loading() {
   return (
-    <div className="min-h-[400px] flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-        <p className="text-muted-foreground">Loading...</p>
-      </div>
-    </div>
+    <Section spacing="xl" center className="min-h-[calc(100vh-4rem)]">
+      <Stack gap="md" align="center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <Text color="muted">Loading...</Text>
+      </Stack>
+    </Section>
   )
 } 
