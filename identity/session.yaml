@@ -1,19 +1,32 @@
-goals:
-  - "Implement modern themed Home page"
-  - "Optimize for performance and accessibility"
-  - "Structure using atomic design"
-  - "Configure deployment"
+# Before starting any task:
+# 1. Run project analysis:
+#    - npm run validate (check code quality and duplication)
+#    - git status (check uncommitted changes)
+#    - ls -la (review project structure)
+#    - tree -I 'node_modules|dist|.git' (view project tree)
+# 2. Note your OS: Windows
+# 3. Review and update this file
 
-summary: "Implemented modern UI components using atomic design principles and prepared for production deployment"
+goals:
+  - "Clean up frontend codebase by removing backend logic"
+  - "Improve type safety and static typing"
+  - "Organize code into proper static data and constants"
+  - "Remove unnecessary components and files"
+  - "Ensure code follows best practices"
+
+summary: "Cleaning up frontend codebase by removing backend logic and improving type safety"
 
 nextSteps:
-  - "Add image assets"
-  - "Set up testing"
-  - "Configure CI/CD"
-  - "Optimize build"
+  - "Review and validate all type definitions"
+  - "Check for any remaining backend-like logic"
+  - "Ensure all constants are properly typed"
+  - "Add proper documentation"
+  - "Run final validation checks"
 
 progress:
-  percentage: 80
-  summary: "Core features implemented, pending optimizations"
+  percentage: 90
+  summary: "Successfully removed backend logic, improved type safety, organized code into static data and constants, and removed unnecessary components"
 
-completed: false 
+completed: false
+
+# Remember to keep this file up to date before starting any new task! 
