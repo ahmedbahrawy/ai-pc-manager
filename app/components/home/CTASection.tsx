@@ -3,50 +3,41 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
-import { 
-  STAGGER_ANIMATION_PROPS, 
-  STAGGER_ITEM_VARIANTS,
-  VIEWPORT_MARGIN 
-} from "@/app/lib/animations"
-import { HOME_CTA } from "@/app/lib/constants/home"
 import { Section } from "@/app/components/atoms/Section"
 import { Stack } from "@/app/components/atoms/Stack"
 import { TextGroup } from "@/app/components/atoms/TextGroup"
+import { STAGGER_CONTAINER_VARIANTS, STAGGER_CHILD_VARIANTS } from "@/app/lib/animations"
 
 export function CTASection() {
   return (
-    <Section spacing="xl" center className="relative isolate overflow-hidden">
-      <Stack gap="lg">
-        <motion.div
-          {...STAGGER_ANIMATION_PROPS}
-          viewport={VIEWPORT_MARGIN}
-        >
+    <Section spacing="2xl" center>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "100px" }}
+        variants={STAGGER_CONTAINER_VARIANTS}
+      >
+        <Stack gap="lg" align="center">
           <TextGroup
             as={motion.div}
-            variants={STAGGER_ITEM_VARIANTS}
-            title={`${HOME_CTA.title.main} ${HOME_CTA.title.sub}`}
-            description={HOME_CTA.description}
+            variants={STAGGER_CHILD_VARIANTS}
+            title="Ready to get started?"
+            description="Join us today and experience the future of AI-powered development."
             align="center"
           />
-        </motion.div>
 
-        <motion.div
-          variants={STAGGER_ITEM_VARIANTS}
-        >
-          <Stack direction="row" gap="md" justify="center">
-            <Button size="lg" className="h-12 px-8" asChild>
-              <Link href={HOME_CTA.cta.primary.href}>
-                {HOME_CTA.cta.primary.text}
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8" asChild>
-              <Link href={HOME_CTA.cta.secondary.href}>
-                {HOME_CTA.cta.secondary.text}
-              </Link>
-            </Button>
-          </Stack>
-        </motion.div>
-      </Stack>
+          <motion.div variants={STAGGER_CHILD_VARIANTS}>
+            <Stack direction="row" gap="md">
+              <Button size="lg" asChild>
+                <Link href="/signup">Get started</Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link href="/contact">Contact sales</Link>
+              </Button>
+            </Stack>
+          </motion.div>
+        </Stack>
+      </motion.div>
 
       {/* Background Gradient */}
       <div

@@ -1,3 +1,5 @@
+import { Variants } from "framer-motion"
+
 export const ANIMATION_DURATION = {
   fast: 0.2,
   normal: 0.3,
@@ -5,7 +7,7 @@ export const ANIMATION_DURATION = {
 } as const
 
 export const ANIMATION_EASE = {
-  default: [0.25, 0.1, 0.25, 1],
+  default: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
   linear: "linear",
   easeIn: "easeIn",
   easeOut: "easeOut",
@@ -14,7 +16,7 @@ export const ANIMATION_EASE = {
 
 export const TRANSITION_DEFAULTS = {
   duration: 0.3,
-  ease: [0.25, 0.1, 0.25, 1],
+  ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
 } as const
 
 export const STAGGER_DEFAULTS = {
@@ -24,12 +26,12 @@ export const STAGGER_DEFAULTS = {
   },
   child: {
     duration: 0.5,
-    ease: [0.25, 0.1, 0.25, 1],
+    ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
   },
 } as const
 
 export const TRANSITION_DURATION = 0.3
-export const TRANSITION_TIMING = [0.25, 0.1, 0.25, 1]
+export const TRANSITION_TIMING: [number, number, number, number] = [0.25, 0.1, 0.25, 1]
 
 export const TRANSITION_DURATION_CLASS = {
   fast: "150ms",

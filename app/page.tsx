@@ -20,18 +20,20 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <HomeErrorBoundary>
-      <Suspense fallback={<HomeLoading />}>
-        <div className="relative flex flex-col">
-          <HeroSection />
-          <div className="relative z-10 flex flex-col bg-background">
-            <FeaturesSection />
-            <SolutionsSection />
-            <StatsSection />
-            <CTASection />
+    <main className="flex min-h-screen flex-col">
+      <HomeErrorBoundary>
+        <Suspense fallback={<HomeLoading />}>
+          <div className="relative flex flex-col">
+            <HeroSection />
+            <div className="relative z-10 flex flex-col bg-background">
+              <FeaturesSection />
+              <SolutionsSection />
+              <StatsSection />
+              <CTASection />
+            </div>
           </div>
-        </div>
-      </Suspense>
-    </HomeErrorBoundary>
+        </Suspense>
+      </HomeErrorBoundary>
+    </main>
   )
 } 

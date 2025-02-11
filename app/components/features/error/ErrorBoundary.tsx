@@ -5,6 +5,7 @@ import { ErrorReport } from "./ErrorReport"
 
 interface Props {
   children: ReactNode
+  fallback: (props: { error: Error | null; reset: () => void }) => ReactNode
 }
 
 interface State {
@@ -24,19 +25,21 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Uncaught error:", error, errorInfo)
+    this.setState({ errorInfo })
+  }
+
+  private handleReset = () => {
+    this.setState({ error: null, errorInfo: null })
   }
 
   public render() {
-    if (this.state.error) {
-      return (
-        <ErrorReport
-          error={this.state.error}
-          errorInfo={this.state.errorInfo}
-          onReset={() => this.setState({ error: null, errorInfo: null })}
-        />
-      )
+    const { error } = this.state
+    const { children, fallback } = this.props
+
+    if (error) {
+      return fallback({ error, reset: this.handleReset })
     }
 
-    return this.props.children
+    return children
   }
-} 
+}

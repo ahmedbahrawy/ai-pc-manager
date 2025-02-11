@@ -1,7 +1,8 @@
+import { Variants } from "framer-motion"
 import { TRANSITION_DEFAULTS, STAGGER_DEFAULTS } from "./constants"
 
 // Basic Variants
-export const FADE_VARIANTS = {
+export const FADE_VARIANTS: Variants = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1,
@@ -9,7 +10,7 @@ export const FADE_VARIANTS = {
   },
 }
 
-export const FADE_UP_VARIANTS = {
+export const FADE_UP_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
@@ -18,7 +19,7 @@ export const FADE_UP_VARIANTS = {
   },
 }
 
-export const FADE_DOWN_VARIANTS = {
+export const FADE_DOWN_VARIANTS: Variants = {
   hidden: { opacity: 0, y: -10 },
   visible: {
     opacity: 1,
@@ -27,7 +28,7 @@ export const FADE_DOWN_VARIANTS = {
   },
 }
 
-export const FADE_LEFT_VARIANTS = {
+export const FADE_LEFT_VARIANTS: Variants = {
   hidden: { opacity: 0, x: -10 },
   visible: {
     opacity: 1,
@@ -36,7 +37,7 @@ export const FADE_LEFT_VARIANTS = {
   },
 }
 
-export const FADE_RIGHT_VARIANTS = {
+export const FADE_RIGHT_VARIANTS: Variants = {
   hidden: { opacity: 0, x: 10 },
   visible: {
     opacity: 1,
@@ -45,7 +46,7 @@ export const FADE_RIGHT_VARIANTS = {
   },
 }
 
-export const SCALE_VARIANTS = {
+export const SCALE_VARIANTS: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -55,14 +56,14 @@ export const SCALE_VARIANTS = {
 }
 
 // Stagger Variants
-export const STAGGER_CONTAINER_VARIANTS = {
+export const STAGGER_CONTAINER_VARIANTS: Variants = {
   hidden: {},
   visible: {
     transition: STAGGER_DEFAULTS.parent,
   },
 }
 
-export const STAGGER_ITEM_VARIANTS = {
+export const STAGGER_ITEM_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
@@ -72,7 +73,7 @@ export const STAGGER_ITEM_VARIANTS = {
 }
 
 // Interactive Variants
-export const HOVER_SCALE_VARIANTS = {
+export const HOVER_SCALE_VARIANTS: Variants = {
   hover: { 
     scale: 1.02,
     transition: { duration: TRANSITION_DEFAULTS.duration, ease: "easeOut" }
@@ -84,7 +85,7 @@ export const HOVER_SCALE_VARIANTS = {
 }
 
 // Combined Variants
-export const CARD_VARIANTS = {
+export const CARD_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
@@ -96,7 +97,7 @@ export const CARD_VARIANTS = {
 }
 
 // Hero Section Variants
-export const HERO_CONTAINER_VARIANTS = {
+export const HERO_CONTAINER_VARIANTS: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -106,7 +107,7 @@ export const HERO_CONTAINER_VARIANTS = {
   },
 }
 
-export const HERO_ITEM_VARIANTS = {
+export const HERO_ITEM_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

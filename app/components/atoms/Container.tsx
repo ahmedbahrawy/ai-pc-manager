@@ -33,6 +33,7 @@ export function Container({
   return (
     <div
       className={cn(
+        "w-full",
         sizeClasses[size],
         paddingClasses[padding],
         center && "mx-auto",

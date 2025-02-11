@@ -1,6 +1,6 @@
 "use client"
 
-import { ErrorBoundary as BaseErrorBoundary } from "@/app/components/features/error"
+import { ErrorBoundary } from "./ErrorBoundary"
 import { Section } from "@/app/components/atoms/Section"
 import { Stack } from "@/app/components/atoms/Stack"
 import { TextGroup } from "@/app/components/atoms/TextGroup"
@@ -12,16 +12,16 @@ interface Props {
   children: ReactNode
 }
 
-interface ErrorFallbackProps {
+interface RootErrorFallbackProps {
   error: Error | null
   reset: () => void
 }
 
-const ErrorFallback = ({ error, reset }: ErrorFallbackProps) => {
+const RootErrorFallback = ({ error, reset }: RootErrorFallbackProps) => {
   if (!error) return null
 
   return (
-    <Section spacing="xl" center>
+    <Section spacing="xl" center className="min-h-[calc(100vh-4rem)]">
       <Stack gap="lg">
         <TextGroup
           title="Something went wrong!"
@@ -39,7 +39,7 @@ const ErrorFallback = ({ error, reset }: ErrorFallbackProps) => {
           </Button>
         </Stack>
 
-        {process.env.NODE_ENV === "development" && (
+        {process.env.NODE_ENV === "development" && error && (
           <Stack gap="sm" className="w-full max-w-2xl rounded-lg border bg-muted/50 p-4">
             <TextGroup
               title="Error Details"
@@ -57,10 +57,10 @@ const ErrorFallback = ({ error, reset }: ErrorFallbackProps) => {
   )
 }
 
-export function HomeErrorBoundary({ children }: Props) {
+export function RootErrorBoundary({ children }: Props) {
   return (
-    <BaseErrorBoundary fallback={ErrorFallback}>
+    <ErrorBoundary fallback={RootErrorFallback}>
       {children}
-    </BaseErrorBoundary>
+    </ErrorBoundary>
   )
 } 

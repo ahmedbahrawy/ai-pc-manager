@@ -2,7 +2,7 @@ import { type HTMLAttributes } from "react"
 import { cn } from "@/app/lib/utils"
 
 export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
-  as?: "p" | "span" | "div"
+  as?: "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl"
   weight?: "normal" | "medium" | "semibold" | "bold"
   align?: "left" | "center" | "right"

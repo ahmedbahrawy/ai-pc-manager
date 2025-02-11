@@ -3,9 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from './components/organisms/Header'
 import { Footer } from './components/organisms/Footer'
-import { ThemeProvider } from './components/theme-provider'
-import { Toaster } from './components/ui/toaster'
-import { ErrorBoundary } from './components/features/error'
+import { ClientProviders } from './components/ClientProviders'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -56,24 +54,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          storageKey="app-theme"
-        >
-          <ErrorBoundary>
-            <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </ErrorBoundary>
-          <Toaster />
-        </ThemeProvider>
+        <ClientProviders>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ClientProviders>
       </body>
     </html>
   )

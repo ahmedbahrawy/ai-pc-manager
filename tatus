@@ -1,0 +1,21 @@
+ app/app/globals.css                             |  21 [31m---[m
+ app/app/page.tsx                                |  56 [31m------[m
+ app/components/atoms/Container.tsx              |   1 [32m+[m
+ app/components/atoms/Section.tsx                |   7 [32m+[m[31m-[m
+ app/components/atoms/Text.tsx                   |   2 [32m+[m[31m-[m
+ app/components/atoms/TextGroup.tsx              |  16 [32m+[m[31m-[m
+ app/components/features/error/ErrorBoundary.tsx |  23 [32m+[m[31m--[m
+ app/components/home/CTASection.tsx              |  57 [32m+++[m[31m---[m
+ app/components/home/ErrorBoundary.tsx           |  94 [32m+++++[m[31m-----[m
+ app/components/home/FeaturesSection.tsx         | 228 [32m+++++++++++++++++++[m[31m-----[m
+ app/components/home/HeroSection.tsx             | 101 [32m++++[m[31m-------[m
+ app/components/home/SolutionsSection.tsx        | 183 [32m+++++++++++++++[m[31m----[m
+ app/components/home/StatsSection.tsx            |  79 [32m++++[m[31m----[m
+ app/layout.tsx                                  |  31 [32m++[m[31m--[m
+ app/lib/animations/constants.ts                 |  10 [32m+[m[31m-[m
+ app/lib/animations/index.ts                     |  40 [32m++[m[31m---[m
+ app/lib/animations/keyframes.ts                 |  14 [32m+[m[31m-[m
+ app/lib/animations/variants.ts                  |  25 [32m+[m[31m--[m
+ app/page.tsx                                    |  26 [32m+[m[31m--[m
+ identity/session.yaml                           |  62 [32m++++[m[31m---[m
+ 20 files changed, 616 insertions(+), 460 deletions(-)

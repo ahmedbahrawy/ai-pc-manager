@@ -1,4 +1,4 @@
-import { TRANSITION_DURATION, TRANSITION_TIMING } from "./constants"
+import { ANIMATION_DURATION, ANIMATION_EASE } from "./constants"
 
 // CSS Keyframe Definitions
 export const KEYFRAMES = {
@@ -76,7 +76,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-fade-in",
     css: `
       .animate-fade-in {
-        animation: fadeIn ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: fadeIn ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
@@ -84,7 +84,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-fade-up",
     css: `
       .animate-fade-up {
-        animation: fadeUp ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: fadeUp ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
@@ -92,7 +92,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-fade-down",
     css: `
       .animate-fade-down {
-        animation: fadeDown ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: fadeDown ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
@@ -100,7 +100,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-scale",
     css: `
       .animate-scale {
-        animation: scale ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: scale ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
@@ -108,7 +108,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-slide-left",
     css: `
       .animate-slide-left {
-        animation: slideLeft ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: slideLeft ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
@@ -116,7 +116,7 @@ export const ANIMATION_CLASSES = {
     className: "animate-slide-right",
     css: `
       .animate-slide-right {
-        animation: slideRight ${TRANSITION_DURATION.normal} ${TRANSITION_TIMING.default};
+        animation: slideRight ${ANIMATION_DURATION.normal}s ${ANIMATION_EASE.default.join(", ")};
       }
     `,
   },
