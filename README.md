@@ -1,114 +1,91 @@
-# AI-Driven Business Solutions
+# AI PC Manager
 
-A Next.js application for AI-driven business solutions, built with modern web technologies and optimized for production deployment.
+A comprehensive AI-powered PC management and optimization platform built with Next.js.
 
-## 🚀 Quick Start
+## Features
 
-```bash
-# Install dependencies
-npm install
+- AI-Powered Development
+- Real-time Collaboration
+- Smart Code Analysis
+- Security First
+- Cloud Deployment
+- Access Control
 
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📁 Project Structure
-
-```
-├── app/
-│   ├── components/
-│   │   ├── atoms/       # Basic building blocks
-│   │   ├── molecules/   # Combinations of atoms
-│   │   ├── organisms/   # Complex components
-│   │   └── features/    # Feature-specific components
-│   ├── lib/
-│   │   ├── animations/  # Animation utilities
-│   │   ├── utils/      # Utility functions
-│   │   └── constants/  # Constants and configuration
-│   └── styles/         # Global styles
-├── public/            # Static assets
-└── scripts/          # Build and deployment scripts
-```
-
-## 🛠 Development
+## Getting Started
 
 ### Prerequisites
 
-- Node.js >= 18
-- npm >= 9
+- Node.js 18 or later
+- npm or yarn
+- Git
 
-### Environment Setup
+### Installation
 
-1. Copy `.env.example` to `.env.local`
-2. Update environment variables as needed
-
-### Code Quality
-
+1. Clone the repository:
 ```bash
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-
-# Testing
-npm run test
+git clone https://github.com/ahmedbahrawy/ai-pc-manager.git
+cd ai-pc-manager
 ```
 
-## 📦 Production Deployment
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-### Build Process
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-1. Clean previous build
-2. Run type checking
-3. Run linting
-4. Optimize images
-5. Build production bundle
-6. Run post-build optimizations
+4. Run the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-### Deployment Steps
+## Deployment
 
-1. Set up environment variables in your deployment platform
-2. Configure deployment secrets in GitHub
-3. Push to main branch to trigger automatic deployment
+The application can be deployed using:
 
-### Performance Optimization
+1. Vercel (Recommended)
+2. Docker
+3. Traditional hosting
 
-- Bundle analysis: `npm run analyze`
-- Image optimization enabled
-- Font optimization enabled
-- CSS/JS minification
-- Code splitting
-- Route prefetching
+### Vercel Deployment
 
-## 🔒 Security
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables
+3. Deploy with automatic CI/CD
 
-- CSP headers configured
-- Security headers enabled
-- Environment variables protected
-- API routes secured
+### Docker Deployment
 
-## 📈 Monitoring
+```bash
+# Build the Docker image
+docker-compose build
 
-- Vercel Analytics integrated
-- Error tracking enabled
-- Performance monitoring
-- User analytics
+# Start the container
+docker-compose up -d
+```
 
-## 🤝 Contributing
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Docker
+- GitHub Actions
+
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch
 3. Commit your changes
 4. Push to the branch
-5. Create a Pull Request
+5. Open a Pull Request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
