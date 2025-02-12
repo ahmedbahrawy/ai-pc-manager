@@ -11,17 +11,18 @@ interface Props {
 
 export function ClientProviders({ children }: Props) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-      storageKey="app-theme"
-    >
-      <RootErrorBoundary>
-        {children}
-      </RootErrorBoundary>
+    <>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem={true}
+        storageKey="theme"
+      >
+        <RootErrorBoundary>
+          {children}
+        </RootErrorBoundary>
+      </ThemeProvider>
       <Toaster />
-    </ThemeProvider>
+    </>
   )
 } 

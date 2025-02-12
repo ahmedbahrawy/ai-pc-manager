@@ -2,32 +2,18 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
+import type { ThemeProviderProps as NextThemesProviderProps } from "next-themes"
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [mounted, setMounted] = React.useState(false)
+export interface ThemeProviderProps extends Omit<NextThemesProviderProps, "children"> {
+  children: React.ReactNode
+}
 
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return <>{children}</>
-  }
-
+export function ThemeProvider({
+  children,
+  ...props
+}: ThemeProviderProps) {
   return (
-    <NextThemesProvider
-      {...props}
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-      attribute="class"
-      value={{
-        light: "light",
-        dark: "dark",
-        system: "system",
-      }}
-    >
+    <NextThemesProvider {...props}>
       {children}
     </NextThemesProvider>
   )
