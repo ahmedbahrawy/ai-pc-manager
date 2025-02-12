@@ -4,11 +4,13 @@ import './globals.css'
 import { Header } from './components/organisms/Header'
 import { Footer } from './components/organisms/Footer'
 import { ClientProviders } from './components/ClientProviders'
+import { headers } from 'next/headers'
 
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
 })
 
 export const viewport: Viewport = {
@@ -23,8 +25,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://your-production-domain.com'),
-  title: 'AI-Driven Business Solutions | My App',
-  description: 'Empowering businesses with AI-Persona driven strategic enhancement, consultation, AI-Micro Apps, and certifications.',
+  title: {
+    default: 'AI Innovation Solutions',
+    template: '%s | AI Innovation Solutions',
+  },
+  description: 'Experience the future of software development with our AI-powered platform.',
   keywords: 'AI Solutions, Business Consulting, AI-Micro Apps, Digital Transformation',
   openGraph: {
     type: 'website',
@@ -44,6 +49,16 @@ export const metadata: Metadata = {
     creator: '@yourtwitterhandle',
     images: '/twitter-image.jpg',
   },
+  applicationName: 'AI Innovation Solutions',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'AI Innovation Solutions',
+  },
+  formatDetection: {
+    telephone: false,
+  },
 }
 
 export default function RootLayout({
@@ -51,8 +66,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Add cache-control headers for static assets
+  const headersList = headers()
+  const isStaticRoute = !headersList.get("x-middleware-cache")
+
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <head>
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_APP_URL} />
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_APP_URL} />
+        
+        {/* Add preload for critical assets */}
+        <link
+          rel="preload"
+          href="/fonts/inter-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ClientProviders>
           <div className="relative flex min-h-screen flex-col">

@@ -1,16 +1,17 @@
 # Project Identity
-name: "AI-Driven Business Solutions"
-purpose: "Empowering businesses with AI-driven solutions and strategic enhancements"
-description: "Next.js application providing AI-driven business solutions, consultation, and micro-apps"
+name: "AI PC Manager"
+purpose: "AI-powered PC management and optimization platform"
+description: "A comprehensive solution for managing and optimizing PC performance using AI"
 
 # Application Type and Requirements
 application:
   type: "web"
   framework: "Next.js"
-  category: "Business Solutions"
+  category: "System Tools"
   target_platforms:
-    - "Web Browsers"
-    - "Progressive Web App"
+    - "Windows"
+    - "macOS"
+    - "Linux"
 
 # System Requirements
 system:
@@ -53,12 +54,17 @@ environment:
       env_file: ".env.production"
       required_variables:
         - "NEXT_PUBLIC_APP_URL"
-        - "NEXT_PUBLIC_APP_ENV"
-        - "NEXT_PUBLIC_API_URL"
-        - "NEXT_PUBLIC_GA_TRACKING_ID"
-        - "NEXT_PUBLIC_FEATURE_FLAGS"
-        - "NEXT_PUBLIC_CACHE_MAX_AGE"
+        - "NEXT_PUBLIC_APP_NAME"
+        - "NEXT_PUBLIC_GOOGLE_ANALYTICS_ID"
+        - "NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"
+        - "API_KEY"
+        - "API_SECRET"
         - "NEXT_PUBLIC_CDN_URL"
+        - "CACHE_TTL"
+        - "NEXT_PUBLIC_ENABLE_ANALYTICS"
+        - "NEXT_PUBLIC_ENABLE_ERROR_REPORTING"
+        - "NEXT_PUBLIC_FEATURE_FLAGS"
+      optional_variables:
         - "NEXT_PUBLIC_CSP_DOMAINS"
         - "DATABASE_URL"
 
@@ -67,7 +73,7 @@ runtime:
   environment: "Node.js v18+"
   requirements:
     - "TypeScript 5.0 or higher"
-    - "npm package manager"
+    - "npm or yarn package manager"
     - "Git for version control"
 
 # Project Structure
@@ -84,22 +90,19 @@ structure:
         purpose: "Shared utilities and helpers"
         contents: "Utility functions and constants"
   conventions:
-    - "Atomic Design Pattern for components"
-    - "Feature-first organization"
-    - "Type-safe throughout"
+    - "Feature-based directory organization"
+    - "Component-driven architecture"
+    - "Atomic design principles"
   specialFolders:
-    - path: "app/components/atoms"
-      description: "Basic building blocks"
-      purpose: "Fundamental UI components"
-    - path: "app/components/molecules"
-      description: "Combinations of atoms"
-      purpose: "Composite components"
-    - path: "app/components/organisms"
-      description: "Complex components"
-      purpose: "Full-featured UI sections"
-    - path: "app/components/features"
-      description: "Feature-specific components"
-      purpose: "Components tied to specific features"
+    - path: "app/components"
+      description: "Reusable UI components"
+      purpose: "Store and organize reusable UI components following atomic design principles"
+    - path: "app/features"
+      description: "Feature-specific implementations"
+      purpose: "Contain isolated feature implementations with their own components and logic"
+    - path: "app/views"
+      description: "Page-level components"
+      purpose: "Handle page-level component composition and layout management"
 
 # Usage and Setup
 usage:
@@ -129,12 +132,9 @@ usage:
 # Documentation
 documentation:
   references:
-    - url: "https://nextjs.org/docs"
-      description: "Next.js Documentation"
-      type: "framework"
-    - url: "https://tailwindcss.com/docs"
-      description: "Tailwind CSS Documentation"
-      type: "styling"
+    - url: "https://github.com/ahmedbahrawy/ai-pc-manager"
+      description: "Main repository"
+      type: "source"
 
 goals:
   - "Implement core features"
